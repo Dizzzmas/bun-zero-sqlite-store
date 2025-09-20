@@ -1,15 +1,23 @@
 # zero-bun-sqlite-store
 
-To install dependencies:
+Use `bun:sqlite` as the KV store for [zero](https://zero.rocicorp.dev/)
+
+Perfect for CLIs, TUIs, and desktop apps
+
+## Installation
 
 ```bash
-bun install
+bun add zero-bun-sqlite-store
 ```
 
-To run:
+## Usage Example
 
-```bash
-bun run index.ts
+```typescript
+import { Zero } from "@rocicorp/zero";
+import { bunSQLiteStoreProvider } from "zero-bun-sqlite-store";
+
+const zero = new Zero({
+  kvStore: bunSQLiteStoreProvider(),
+  ...
+});
 ```
-
-This project was created using `bun init` in bun v1.2.21. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
