@@ -1,3 +1,5 @@
+![Tests](https://github.com/Dizzzmas/bun-zero-sqlite-store/actions/workflows/test.yml/badge.svg)
+
 # zero-bun-sqlite-store
 
 Use `bun:sqlite` as the KV store for [zero](https://zero.rocicorp.dev/)
