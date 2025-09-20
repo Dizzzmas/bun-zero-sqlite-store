@@ -1,0 +1,21 @@
+{
+  "name": "zero-bun-sqlite-store",
+  "version": "0.0.1",
+  "module": "index.ts",
+  "packageManager": "bun@1.2.21",
+  "type": "module",
+  "files": [
+    "index.ts",
+    "zero-unexposed/"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@rocicorp/resolver": "^1.0.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@rocicorp/lock": "^1.0.4"
+  }
+}
