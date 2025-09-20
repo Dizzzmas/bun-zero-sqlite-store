@@ -10,7 +10,7 @@ Perfect for CLIs, TUIs, and desktop apps
 bun add zero-bun-sqlite-store
 ```
 
-## Usage Example
+## Example Usage
 
 ```typescript
 import { Zero } from "@rocicorp/zero";
@@ -20,4 +20,18 @@ const zero = new Zero({
   kvStore: bunSQLiteStoreProvider(),
   ...
 });
+```
+
+## P.S.
+
+Ideally this becomes part of `@rocicorp/zero`, working on a contribution.
+
+This was tested with standard zero sqlite store test suite.
+
+Running tests
+
+```bash
+bun install
+
+bun test
 ```
