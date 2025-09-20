@@ -1,5 +1,5 @@
 import { Database, type Statement } from "bun:sqlite";
-import { unlinkSync } from "fs";
+import { unlinkSync, existsSync } from "fs";
 import type {
   PreparedStatement,
   SQLiteDatabase,
@@ -73,7 +73,9 @@ class BunSQLiteDatabase implements SQLiteDatabase {
   }
 
   destroy(): void {
-    unlinkSync(this.#filename);
+    if (existsSync(this.#filename)) {
+      unlinkSync(this.#filename);
+    }
   }
 
   prepare(sql: string): PreparedStatement {
