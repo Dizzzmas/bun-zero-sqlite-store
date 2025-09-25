@@ -1,5 +1,5 @@
 import { Database, type Statement } from "bun:sqlite";
-import { unlinkSync, existsSync } from "fs";
+import { unlinkSync, existsSync } from "node:fs";
 import type {
   PreparedStatement,
   SQLiteDatabase,
@@ -28,26 +28,8 @@ class BunSQLitePreparedStatement implements PreparedStatement {
   }
 
   async firstValue(params: string[]): Promise<string | undefined> {
-    const row = this.#statement.get(params);
-
-    if (row === null || row === undefined) {
-      return undefined;
-    }
-
-    // Handle different row structures based on the query
-    // For has() queries: SELECT 1 FROM entry WHERE key = ? LIMIT 1
-    // Returns: {1: 1} when key exists
-    if (typeof row === "object" && row !== null && "1" in row) {
-      return "1";
-    }
-
-    // For get() queries: SELECT value FROM entry WHERE key = ?
-    // Returns: {value: "json_string"} when key exists
-    if (typeof row === "object" && row !== null && "value" in row) {
-      return (row as { value: string }).value;
-    }
-
-    return undefined;
+    const rows = this.#statement.values(params) as string[][];
+    return rows[0]?.[0];
   }
 
   async exec(params: string[]): Promise<void> {
